@@ -12,16 +12,13 @@ const port = process.env.PORT || 3000;
 
 // Configuration de lowdb
 const db = new Low(new JSONFile('src/config/db.json'), {})
-/
+
 
 
 // Middleware pour parser le JSON
 app.use(express.json());
 
-// Démarrer le serveur
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
+
   
 
 // Route de base
@@ -35,5 +32,10 @@ app.get('/api/items', async (req, res) => {
   const items = db.data.items;
   res.json(items);
 //   console.log(items)
+});
+
+// Démarrer le serveur
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
